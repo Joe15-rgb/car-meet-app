@@ -17,6 +17,13 @@ class Validator {
         "string.max": "Password must be at most 30 characters long",
       }),
       confirmPassword: Joi.ref("password"),
+      phone: Joi.string().min(10).max(15).regex(/^[0-9]+$/).required().messages({
+        "string.empty": "Phone cannot be empty",
+        "any.required": "Phone is required",
+        "string.min": "Phone must be at least 10 characters long",
+        "string.max": "Phone must be at most 15 characters long",
+        "string.pattern.base": "Phone must be a number"
+      }),
       email: Joi.string().email().required().messages({
         "string.empty": "Email cannot be empty",
         "any.required": "Email is required",

@@ -1,0 +1,21 @@
+<!-- {
+  type :  String,
+  name: String,
+  value: String || Number
+  required : Boolen
+} -->
+  <div class="field">
+    <input
+    type="<%= type  %>"
+    name="<%= name %>"
+    value="<%= value %>"
+    placeholder="Entrez votre <%= name %>"
+    <% if (type === "text") { %>
+      maxlength=""
+      minlength=""
+    <% } %>
+    <% if (required) { %>
+      required
+    <% } %>
+    >
+  </div>

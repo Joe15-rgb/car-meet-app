@@ -1,6 +1,7 @@
 "use strict"
 
 import {Model, DataTypes} from "sequelize"
+import hashpassword from "../utils/hashpassword.mjs"
 
 export default (sequelize) =>{
 
@@ -18,6 +19,7 @@ export default (sequelize) =>{
       type: DataTypes.STRING,
       unique: true
     },
+    phone: DataTypes.STRING(15),
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -31,10 +33,10 @@ export default (sequelize) =>{
   })
 
   User.beforeCreate((user) => {
-    user.password = User.encryptPassword(user.password)
+    user.password = hashpassword(user.password)
   })
   User.afterUpdate((user) => {
-    user.password = User.encryptPassword(user.password)
+    user.password = hashpassword(user.password)
   })
 
   return User
