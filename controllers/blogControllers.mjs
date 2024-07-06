@@ -8,8 +8,11 @@ class BlogControllers {
     res.render("index")
   }
 
-  static async signup(req, res) {
-    res.render("signup")
+  static async signIn(req, res) {
+    res.render("register")
+  }
+  static async login(req, res) {
+    res.render("login")
   }
 
   static async addUser(req, res) {
@@ -34,7 +37,8 @@ class BlogControllers {
           password
          }
         })
-        res.send(value)
+        res.flash("success", "account create with success")
+        res.status(300).redirect("/login", {user, password})
       }
 
 
@@ -49,9 +53,6 @@ class BlogControllers {
     res.render("about")
   }
 
-  static async get404(req, res) {
-    res.render("404")
-  }
 }
 
 

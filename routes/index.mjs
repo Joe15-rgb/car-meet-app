@@ -5,8 +5,18 @@ const router = express.Router()
 
 router.get("/", BlogControllers.index)
 
-router.route('/signup')
-.get(BlogControllers.signup)
+router.route('/register')
+.get(BlogControllers.signIn)
 .post(BlogControllers.addUser)
+
+
+router.route('/login')
+.get(BlogControllers.login)
+.post(BlogControllers.login)
+
+router.get('/contact', BlogControllers.getContact)
+
+router.get('/about', BlogControllers.getAbout)
+
 
 export default router

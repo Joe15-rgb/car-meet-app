@@ -10,6 +10,7 @@ import helmet from "helmet"
 import cors from "cors"
 import flash from "express-flash"
 import methodOverride from "method-override"
+import passport from "passport"
 
 dotenv.config()
 
@@ -30,6 +31,10 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+app.use(passport.initialize())
+app.use(passport.session())
+
+//Routes
 
 app.use("/", indexRouter)
 
